@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+  REGISTER
+{% endblock %}
+
+{% block content %}
+  <form method="POST" action="" class="border-2 border-red-500 w-full h-screen flex flex-col justify-center items-center gap-y-4">
+    {% csrf_token %}
+     {% comment %} <table>
+      {{ form.as_table }}
+    </table> {% endcomment %}
+    <div class="form-control sm:w-1/2 w-11/12">
+      {{form.username}}
+    </div>
+    <div class="form-control sm:w-1/2 w-11/12">
+      {{form.password}}
+    </div>
+    <div class="form-control sm:w-1/2 w-11/12">
+      {{form.email}}
+    </div>
+    <button class="px-10 py-4 sm:w-1/2 w-11/12 rounded-md bg-red-500 text-white hover:bg-red-700" type="submit">Register</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+  HomePage
+{% endblock %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    Hi {{ user.username }}! You are logged in. 
+    <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">logout</button>
+</form>
+  {% else %}
+  {% comment %} https://forum.djangoproject.com/t/showing-method-not-allowed-get-users-logout/26044 {% endcomment %}
+  {% comment %} Method Not Allowed: /accounts/logout/ {% endcomment %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a>
+  {% endif %}
+{% endblock %}
